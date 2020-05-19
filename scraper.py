@@ -27,12 +27,12 @@ def check_price():
 
     price = soup.find("span", {"itemprop": "price", "content": True})['content']
     print("$", price)
-
-    if (price < 160):
+    price = float(price)
+    if (price < 160): 
         send_mail()
 
 def send_mail():
-    server = smtplib.SMTP('smtp', 'smtp.mailinator.com', 587)
+    server = smtplib.SMTP('smtp.gmail.com', 587)
     
     #establish connection between email server
     server.ehlo()
@@ -50,9 +50,12 @@ def send_mail():
 
     server.sendmail(
         'kheang.learning@gmail.com',
-        'ken.hike1@gmail.com',
+        'helloworld11@mailinator.com',
         msg
     )
 
     print('EMAIL SENT!')
-    server.quit
+    server.quit()
+
+#call funtion
+check_price()
