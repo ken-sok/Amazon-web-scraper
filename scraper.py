@@ -18,9 +18,6 @@ def check_price():
     #parse the page
     soup = BeautifulSoup(page.content, 'html.parser')
 
-    #soup2 = BeautifulSoup(soup1.prettify(), 'html.parser')
-    #print(soup2)
-
     title = soup.find(id="itemTitle")
     print(''.join(text for text in title.find_all(text=True)
                 if text.parent.name != "span"))
@@ -32,6 +29,8 @@ def check_price():
         send_mail()
 
 def send_mail():
+    
+    #using gmail smtp
     server = smtplib.SMTP('smtp.gmail.com', 587)
     
     #establish connection between email server
@@ -40,7 +39,7 @@ def send_mail():
     server.starttls()
     
     server.ehlo()
-    server.login('kheang.learning@gmail.com', '<input password>')
+    server.login('<gmail mail>', '<input password>')
 
     subject = "Price fell down!"
     body = "Check the ebay link: " + URL
@@ -49,8 +48,8 @@ def send_mail():
     msg = f"Subject: {subject}\n\n{body}"
 
     server.sendmail(
-        'kheang.learning@gmail.com',
-        'helloworld11@mailinator.com',
+        '<sender email>',
+        '<recipient email>',
         msg
     )
 
