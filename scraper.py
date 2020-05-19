@@ -40,7 +40,7 @@ def send_mail():
     server.starttls()
     
     server.ehlo()
-    server.login('kheang.learning@gmail.com', 'jwyieiltklrvrwvf')
+    server.login('kheang.learning@gmail.com', '<input password>')
 
     subject = "Price fell down!"
     body = "Check the ebay link: " + URL
